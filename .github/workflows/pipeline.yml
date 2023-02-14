@@ -17,14 +17,14 @@ jobs:
     # if: ${{ github.event_name == 'pull_request'}}
 
     steps:
-
+    
       - name: ServiceNow CI/CD Apply Changes
         uses: ServiceNow/sncicd-apply-changes@2.0.0
         env:
-          nowUsername: admin
-          nowPassword: Iambatman1!
-          nowSourceInstance: https://dev146950.service-now.com/
-          appSysID: dc29190547456110f76b23dbd36d4340
+          nowUsername: ${{ secrets.SN_USERNAME }}
+          nowPassword: ${{ secrets.SN_PASSWORD }}
+          nowSourceInstance: ${{ secrets.SN_DEV_INSTANCE }}
+          appSysID: ${{ secrets.SN_APP_SYSID }}
 
       - name: ServiceNow CI/CD Publish App
         id: publish_app
